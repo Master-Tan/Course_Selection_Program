@@ -1,0 +1,892 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>学生选课</title>
+<link href="/ieas2.1/resources/css/common/style.css" rel="stylesheet" type="text/css"/>
+<link href="/ieas2.1/resources/css/common/content.css" rel="stylesheet" type="text/css"/>
+<link href="/ieas2.1/resources/css/common/pageTag.css" rel="stylesheet" type="text/css"/>
+<script src="/ieas2.1/resources/js/jquery/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="/ieas2.1/resources/js/jquery/jquery.form.js" type="text/javascript"></script>
+<script src="/ieas2.1/resources/js/common/validator.js" type="text/javascript"></script>
+<script src="/ieas2.1/resources/js/common/jqcheckBox.js" type="text/javascript"></script>
+<script src="/ieas2.1/resources/js/jquery/jquery.chained.remote.js" type="text/javascript"></script>
+<script src="/ieas2.1/resources/js/common/jqreload.js" type="text/javascript"></script>
+<link href="/ieas2.1/resources/js/sweetalert2/sweetalert2.css" rel="stylesheet" type="text/css"/>
+<script src="/ieas2.1/resources/js/sweetalert2/sweetalert2.min.js"></script>
+<style type="text/css">
+
+	.Contentbox { width:100%; min-height:100%;height:auto }
+	*html .Contentbox { height:100% }
+</style>
+<script src="/ieas2.1/resources/js/pub/xslbxk.js" type="text/javascript"></script>
+<script src="/ieas2.1/resources/js/common/modalpopup.js" type="text/javascript"></script>
+<script src="/ieas2.1/resources/js/common/opendiv.js" type="text/javascript"></script>
+<script type="text/javascript">
+ 	function queryKcxxDiv(kcdm){
+ 		var src = "/ieas2.1/pub/queryKcxxView?kcdm="+kcdm+"&flag=1";
+ 		jQuery("#iframename_kcxx").attr("src",src);
+ 		BOX_show('kcBoxDiv');
+ 	}
+ </script>
+</head><body marginheight="0" marginwidth="0"><div id="kcBoxDiv" style="display:none; width: 700px;border: 1px solid #2c4f72;-webkit-box-shadow: 0px 0px 5px #000;-moz-box-shadow: 0px 0px 5px #000;box-shadow: 0px 0px 5px #000; ">
+<div class="Floatleft Pct100 popup_bg">
+<div class="popup_left">查看课程信息</div>
+</div>
+<div class="clr"></div>
+<div class="popup">
+<iframe allowtransparency="true" border="0" frameborder="0" framespacing="0" id="iframename_kcxx" marginheight="0" marginwidth="0" name="iframename_kcxx" src="" style="width: 680px; height: 400px;"></iframe>
+<div class="clr"></div>
+<table cellpadding="0" cellspacing="0" class="mt10" style="border-collapse:collapse" width="100%">
+<tbody><tr>
+<td>
+<div class="addlist_button1" style="float:right">
+<a href="javascript:BOX_remove('kcBoxDiv');"><span>关闭</span></a>
+</div>
+</td>
+</tr>
+</tbody></table>
+<div class="clr"></div>
+</div>
+</div>
+<div id="setting"></div>
+<script type="text/javascript">
+ 	function queryJsxxDiv(zgh){
+ 		var src = "/ieas2.1/pub/queryJsxxView?zgh="+zgh;
+ 		jQuery("#iframename_jsxx").attr("src",src);
+ 		BOX_show('jsBoxDiv');
+ 	}
+ </script>
+<div id="jsBoxDiv" style="display:none; width: 600px; border: 1px solid #2c4f72;-webkit-box-shadow: 0px 0px 5px #000;-moz-box-shadow: 0px 0px 5px #000;box-shadow: 0px 0px 5px #000; ">
+<div class="Floatleft Pct100 popup_bg">
+<div class="popup_left">查看教师信息</div>
+</div>
+<div class="clr"></div>
+<div class="popup">
+<iframe allowtransparency="true" border="0" frameborder="0" framespacing="0" id="iframename_jsxx" marginheight="0" marginwidth="0" name="iframename_jsxx" src="" style="width: 580px; height: 300px;"></iframe>
+<div class="clr"></div>
+<table cellpadding="0" cellspacing="0" class="mt10" style="border-collapse:collapse" width="100%">
+<tbody><tr>
+<td align="center">
+<div class="addlist_button1" style="float:right">
+<a href="javascript:BOX_remove('jsBoxDiv');"><span>关闭</span></a>
+</div>
+</td>
+</tr>
+</tbody></table>
+<div class="clr"></div>
+</div>
+</div>
+<div id="setting"></div>
+<div id="DivLoading" style="display:none;">
+<img src="/ieas2.1/resources/images/common/loading.gif"/>
+</div>
+<div id="setting"></div>
+<style>
+.xkbox {width:100%;height:24px;border-bottom:1px solid #b2cdc3; margin-top:5px; margin-bottom:5px }
+.xkbox ul{margin:0px;padding:0; height:24px;float:left;}
+.xkbox li{float:left;cursor:pointer;line-height:23px;height:23px; border-top:1px solid #b2cdc3;border-right:1px solid #b2cdc3;background-color:#f0fdf9; }
+.xkbox li a{ display:block;padding:0px 15px;color:#444444; }
+.xkbox li:hover{background: #ffffff;color:#193373; font-weight: bold;border-top:2px solid #c56600;height:23px;line-height:23px; }
+.xkbox li.hover{ height:23px;line-height:23px;  background: #ffffff;color:#193373; font-weight: bold;border-top:2px solid #c56600; }
+.xkbox li.hover a{color:#c56600; display:block;padding:0px 15px }
+</style>
+<script type="text/javascript">
+	var xnxq = '';
+	var nj = '';
+	var yxdm = '';
+	var zydm = '';
+	var bjdm = '';
+
+	jQuery().ready(function (){ 
+		
+		 xnxq ='2021-20222';
+		 nj ='';
+		 yxdm ='';
+		 zydm ='';
+		 bjdm ='';
+		
+		if(xnxq == '') xnxq = $("#pageXnxq").val();  
+		onXnxq(xnxq,0);
+		onNj(nj,0);
+		onYx(yxdm,0);
+		onZy(zydm,0);
+ 
+ 	});
+ 
+	
+ 	//查询
+	function queryLike(){
+		var pageXnxqid = $("#pageXnxq").val();
+         if( pageXnxqid == "" ){
+             alert('请选择学年学期查询'); 
+             return;
+        } 
+		
+		BOX_show('DivLoading');
+  	 	document.queryform.action = "/ieas2.1/xslbxk/queryXsxkList";
+        document.queryform.submit();
+	}
+
+	function onOpenTr(obj,trId){
+		if($("tr[name^='"+trId+"']").css('display')=='none'){
+			$("tr[name^='"+trId+"']").show('fast',function(){
+				$(obj).addClass("close_xk").removeClass("open_xk").attr("title","关闭");
+			} );
+		}else{
+			$("tr[name^='"+trId+"']").hide('fast',function(){
+				$(obj).addClass("open_xk").removeClass("close_xk").attr("title","展开");
+			} );
+		}
+	}
+	
+	//标签卡跳转
+	function onTurn(num,lj){
+		if(lj==''){
+			$("#pageKclb").val(num);
+	        document.queryform.action =  "/ieas2.1/xslbxk/queryXsxk";
+	        document.queryform.submit();
+		}else{
+			var lj=lj;
+			$("#pageXklb").val(lj);
+			document.queryform.action =  "/ieas2.1/xsxk/queryXsxk";
+		    document.queryform.submit();
+		}
+	}
+	
+	function kcdmpx(falg)
+	{
+	  $("#kcdmpx").val(falg);
+	  queryLike();
+	}
+	function kcmcpx(falg)
+	{
+	 $("#kcmcpx").val(falg);
+	 queryLike();
+	}
+	function rlpx(falg)
+	{
+	 $("#rlpx").val(falg);
+	 queryLike();
+	}
+  </script>
+<div class="Contentbox">
+<div class="pd10">
+<div class="address">当前位置：学生选课&gt;&gt; <a href="javascript:void(0);" onclick="javascript:jwreload();return false;">专业课程</a></div>
+<div class="clr"></div>
+<div class="xkbox">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td>
+<ul>
+<li><a href="javascript:void(0);" onclick="javascript:onTurn('I','');return false;">核心专业类</a></li>
+<li class="hover"><a href="javascript:void(0);" onclick="javascript:onTurn('J','');return false;">一般专业类</a></li>
+<li><a href="javascript:void(0);" onclick="javascript:onTurn('W','szhx');return false;">科研课堂</a></li>
+</ul>
+</td>
+<td align="center">
+<span class="bold red FONT14 zytsxx">不在学生选课时间范围内！</span>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="butsea">
+<form id="queryform" method="post" name="queryform">
+<input id="kcdmpx" name="kcdmpx" type="hidden" value=""/>
+<input id="kcmcpx" name="kcmcpx" type="hidden" value=""/>
+<input id="rlpx" name="rlpx" type="hidden" value=""/>
+<input id="path_id" type="hidden" value="/ieas2.1"/>
+<input id="rwhid" name="rwh" type="hidden" value=""/>
+<input id="zy" name="zy" type="hidden" value=""/>
+<input id="qz" name="qz" type="hidden" value=""/>
+<input id="token" name="token" type="hidden" value="0.5727857298541985"/>
+<input id="pageKclb" name="pageKclb" type="hidden" value="J"/>
+<input id="pageXklb" name="pageXklb" type="hidden" value="xslbxk"/>
+<input id="pageXkmkdm" name="pageXkmkdm" type="hidden" value="ZYL"/>
+<ul class="search">
+<li>
+<span class="red mr5">*</span>学年学期：
+					 <select class="XNXQ_CON" id="pageXnxq" name="pageXnxq" onchange="onXnxq(this.value)">
+<option selected="selected" value="2021-20222">2022春季</option>
+<option value="2021-20221">2021秋季</option>
+<option value="2020-20213">2021夏季</option>
+<option value="2020-20212">2021春季</option>
+<option value="2020-20211">2020秋季</option>
+<option value="2019-20203">2020夏季</option>
+<option value="2019-20202">2020春季</option>
+<option value="2019-20201">2019秋季</option>
+<option value="2018-20193">2019夏季</option>
+<option value="2018-20192">2019春季</option>
+<option value="2018-20191">2018秋季</option>
+<option value="2017-20183">2018夏季</option>
+<option value="2017-20182">2018春季</option>
+<option value="2017-20181">2017秋季</option>
+<option value="2016-20172">2017春季</option>
+<option value="2016-20171">2016秋季</option>
+</select>
+</li>
+<li>
+                   	  开课校区：
+					 <select class="XIAOQU_CON" name="pageKkxiaoqu">
+<option value="">-全部-</option>
+<option value="1">学院路校区</option>
+<option value="2">沙河校区</option>
+</select>
+</li>
+<li>
+ 					开课院系：
+					 <select class="YX_CON" id="pageKkyxid" name="pageKkyx">
+<option value="">-全部-</option>
+<option value="01">[01]材料科学与工程学院</option>
+<option value="02">[02]电子信息工程学院</option>
+<option value="03">[03]自动化科学与电气工程学院</option>
+<option value="04">[04]能源与动力工程学院</option>
+<option value="05">[05]航空科学与工程学院</option>
+<option value="06">[06]计算机学院</option>
+<option value="07">[07]机械工程及自动化学院</option>
+<option value="08">[08]经济管理学院</option>
+<option value="09">[09]数学科学学院</option>
+<option value="10">[10]生物与医学工程学院</option>
+<option value="11">[11]人文社会科学学院</option>
+<option value="12">[12]外国语学院</option>
+<option value="13">[13]交通科学与工程学院</option>
+<option value="14">[14]可靠性与系统工程学院</option>
+<option value="15">[15]宇航学院</option>
+<option value="16">[16]飞行学院</option>
+<option value="17">[17]仪器科学与光电工程学院</option>
+<option value="18">[18]北京学院</option>
+<option value="19">[19]物理学院</option>
+<option value="20">[20]法学院</option>
+<option value="21">[21]软件学院</option>
+<option value="22">[22]现代远程教育学院</option>
+<option value="23">[23]未来空天技术学院/高等理工学院</option>
+<option value="24">[24]中法工程师学院</option>
+<option value="25">[25]国际学院</option>
+<option value="26">[26]新媒体艺术与设计学院</option>
+<option value="27">[27]化学学院</option>
+<option value="28">[28]马克思主义学院</option>
+<option value="29">[29]人文与社会科学高等研究院</option>
+<option value="30">[30]空间与环境学院</option>
+<option value="31">[31]武装部</option>
+<option value="32">[32]工程训练中心</option>
+<option value="33">[33]体育部</option>
+<option value="34">[34]图书馆</option>
+<option value="35">[35]国际通用工程学院</option>
+<option value="36">[36]校医院</option>
+<option value="37">[37]招生就业处</option>
+<option value="38">[38]无人机所</option>
+<option value="39">[39]网络空间安全学院</option>
+<option value="40">[40]校机关</option>
+<option value="41">[41]继续教育学院</option>
+<option value="42">[42]人工智能研究院</option>
+<option value="44">[44]研究生院</option>
+<option value="48">[48]前沿科学技术创新研究院</option>
+<option value="49">[49]集成电路科学与工程学院</option>
+<option value="50">[50]校际</option>
+<option value="51">[51]学生处武装部</option>
+<option value="53">[53]团委</option>
+<option value="55">[55]校际（沙河联盟）</option>
+<option value="56">[56]校内其它单位</option>
+<option value="60">[60]校外单位</option>
+<option value="70">[70]北航学院</option>
+<option value="231">[231]数学科学学院（华罗庚班）</option>
+<option value="85">[85]无人系统研究院</option>
+<option value="86">[86]航空发动机研究院</option>
+</select>
+</li>
+<li> 课程：
+				    <input class="KC_CON" name="pageKcmc" type="text" value=""/>
+</li>
+<li>隐藏冲突课程：
+	                	<input name="pageYcctkc" type="checkbox" value="1"/>
+</li>
+<li>
+<div class="addlist_button2 mt4">
+<a href="javascript:void(0);" onclick="javascript:queryLike();return false;"><span>查  询</span></a>
+</div>
+</li>
+<li>
+<span class="Floatright bold blue">
+		              
+						    选课时间：2022-02-28 13:00 至  2022-03-06 17:00
+		              
+	               </span>
+</li>
+</ul>
+</form>
+<div class="Floatleft red ml10">
+</div>
+</div>
+<div class="clr"></div>
+<div class="list">
+<!-- ==========================================选课类别：学生类别选课====================================================== -->
+<!-- ==========================================选课类别：学生类别选课====================================================== -->
+<table cellpadding="0" cellspacing="0" class="bot_line" style="border-collapse:collapse" width="100%">
+<tbody><tr>
+<th width="70px"> </th>
+<th width="30px">序号</th>
+<th>课程代码<a href="javaScript:void(0);" onclick="javaScript:kcdmpx('1');">↑</a><a href="javaScript:void(0);" onclick="javaScript:kcdmpx('0');">↓</a></th>
+<th>课程名称<a href="javaScript:void(0);" onclick="javaScript:kcmcpx('1');">↑</a>  <a href="javaScript:void(0);" onclick="javaScript:kcmcpx('0');">↓</a></th>
+<th>前置课程</th>
+<th>选课须知</th>
+<th>面向对象</th>
+<th>课程板块类别</th>
+<th>校区</th>
+<th>上课信息</th>
+<th>课程类别</th>
+<th>课程性质</th>
+<th>开课院系</th>
+<th style="width: 30px;">学分</th>
+<th>剩余人数/容量<a href="javaScript:void(0);" onclick="javaScript:rlpx('1');">↑</a><a href="javaScript:void(0);" onclick="javaScript:rlpx('0');">↓</a></th>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>21</td>
+<td>B3J023150</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J023150');return false;">嵌入式系统原理与应用</a></td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;">[课内实验]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08201')">刁为民</a>◇<br/>[7-10周]星期二第11,12,13,14节◇空天电子信息国家级实验教学示范中心（新主楼F404/402）<br/>[主任务]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('06426')">张晓林</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08183')">杨昕欣</a>◇<br/>[1-4周]星期一第1,2节◇F201,[5-8周]星期一第1,2节◇F201</div></td>
+<td>一般专业类</td>
+<td>限修</td>
+<td>电子信息工程学院</td>
+<td>1.5</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J023150-001-B" type="hidden" value=""/>
+								
+								  0/30 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>22</td>
+<td>B3J023150</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J023150');return false;">嵌入式系统原理与应用</a></td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;">[课内实验]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08201')">刁为民</a>◇<br/>[7-10周]星期三第11,12,13,14节◇空天电子信息国家级实验教学示范中心（新主楼F404/402）<br/>[主任务]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08152')">周  强</a>◇<br/>[1-8周]星期一第1,2节◇F213</div></td>
+<td>一般专业类</td>
+<td>限修</td>
+<td>电子信息工程学院</td>
+<td>1.5</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J023150-002-A" type="hidden" value=""/>
+								
+								  0/30 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>23</td>
+<td>B3J023150</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J023150');return false;">嵌入式系统原理与应用</a></td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;">[课内实验]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08201')">刁为民</a>◇<br/>[7-10周]星期四第11,12,13,14节◇空天电子信息国家级实验教学示范中心（新主楼F404/402）<br/>[主任务]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08152')">周  强</a>◇<br/>[1-8周]星期一第1,2节◇F213</div></td>
+<td>一般专业类</td>
+<td>限修</td>
+<td>电子信息工程学院</td>
+<td>1.5</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J023150-002-B" type="hidden" value=""/>
+								
+								  0/30 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>24</td>
+<td>B3J023150</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J023150');return false;">嵌入式系统原理与应用</a></td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;">[课内实验]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08201')">刁为民</a>◇<br/>[7-10周]星期五第11,12,13,14节◇空天电子信息国家级实验教学示范中心（新主楼F404/402）<br/>[主任务]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('07297')">赵  琦</a>◇<br/>[1-8周]星期一第1,2节◇D215</div></td>
+<td>一般专业类</td>
+<td>限修</td>
+<td>电子信息工程学院</td>
+<td>1.5</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J023150-003-A" type="hidden" value=""/>
+								
+								  0/30 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>25</td>
+<td>B3J023150</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J023150');return false;">嵌入式系统原理与应用</a></td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;">[课内实验]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08201')">刁为民</a>◇<br/>[7-10周]星期六第11,12,13,14节◇空天电子信息国家级实验教学示范中心（新主楼F404/402）<br/>[主任务]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('07297')">赵  琦</a>◇<br/>[1-8周]星期一第1,2节◇D215</div></td>
+<td>一般专业类</td>
+<td>限修</td>
+<td>电子信息工程学院</td>
+<td>1.5</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J023150-003-B" type="hidden" value=""/>
+								
+								  18/30 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>26</td>
+<td>B3J023150</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J023150');return false;">嵌入式系统原理与应用</a></td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;">[课内实验]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08201')">刁为民</a>◇<br/>[7-10周]星期日第1,2,3,4节◇空天电子信息国家级实验教学示范中心（新主楼F404/402）<br/>[主任务]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('07316')">刘荣科</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08183')">杨昕欣</a>◇<br/>[1-4周]星期一第1,2节◇D218,[5-8周]星期一第1,2节◇D218</div></td>
+<td>一般专业类</td>
+<td>限修</td>
+<td>电子信息工程学院</td>
+<td>1.5</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J023150-004-A" type="hidden" value=""/>
+								
+								  25/30 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>27</td>
+<td>B3J023150</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J023150');return false;">嵌入式系统原理与应用</a></td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;">[课内实验]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08201')">刁为民</a>◇<br/>[7-10周]星期日第6,7,8,9节◇空天电子信息国家级实验教学示范中心（新主楼F404/402）<br/>[主任务]<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('07316')">刘荣科</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08183')">杨昕欣</a>◇<br/>[1-4周]星期一第1,2节◇D218,[5-8周]星期一第1,2节◇D218</div></td>
+<td>一般专业类</td>
+<td>限修</td>
+<td>电子信息工程学院</td>
+<td>1.5</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J023150-004-B" type="hidden" value=""/>
+								
+								  28/30 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>28</td>
+<td>B3J023240</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J023240');return false;">现代通信天线</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('06734')">全绍辉</a>◇<br/>[1-8周]星期四第3,4节◇F102</div></td>
+<td>一般专业类</td>
+<td>必修</td>
+<td>电子信息工程学院</td>
+<td>1.5</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J023240-002" type="hidden" value=""/>
+								
+								  37/90 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>29</td>
+<td>B3J024310</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J024310');return false;">现代空中交通管理</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09135')">曹先彬</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09549')">薛  瑞</a>◇<br/>[1-5周]星期二第3,4节◇F121,[1-5周]星期四第3,4节◇F121,[6-10周]星期二第3,4节◇F121,[6-10周]星期四第3,4节◇F121</div></td>
+<td>一般专业类</td>
+<td>限修</td>
+<td>电子信息工程学院</td>
+<td>3.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J024310-001" type="hidden" value=""/>
+								
+								  55/100 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>30</td>
+<td>B3J05022A</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J05022A');return false;">航空科学技术发展概论</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('05046')">马东立</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('05710')">陈  铭</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('06336')">张兴娟</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08395')">张纪奎</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09885')">杨穆清</a>◇<br/>[1-8周]星期五第6,7节◇(一)212</div></td>
+<td>一般专业类</td>
+<td>任修</td>
+<td>航空科学与工程学院</td>
+<td>1.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J05022A-001" type="hidden" value=""/>
+								
+								  53/120 对外:0/5
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>31</td>
+<td>B3J05022A</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J05022A');return false;">航空科学技术发展概论</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('05046')">马东立</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('05710')">陈  铭</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('06336')">张兴娟</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08395')">张纪奎</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09885')">杨穆清</a>◇<br/>[1-8周]星期五第8,9节◇(一)212</div></td>
+<td>一般专业类</td>
+<td>任修</td>
+<td>航空科学与工程学院</td>
+<td>1.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J05022A-002" type="hidden" value=""/>
+								
+								  39/125 对外:0/5
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>32</td>
+<td>B3J05038A</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J05038A');return false;">航空飞行器系统工程概论</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09433')">沈作军</a>◇<br/>[1-8周]星期一第6,7节◇(一)301</div></td>
+<td>一般专业类</td>
+<td>任修</td>
+<td>航空科学与工程学院</td>
+<td>1.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J05038A-001" type="hidden" value=""/>
+								
+								  70/150 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>33</td>
+<td>B3J050902</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J050902');return false;">航空工程师应知应会（下）</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('07175')">王  松</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('07693')">万志强</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09591')">戴玉婷</a>◇<br/>[1-12周]星期五第6,7节◇F101</div></td>
+<td>一般专业类</td>
+<td>任修</td>
+<td>航空科学与工程学院</td>
+<td>1.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J050902-001" type="hidden" value=""/>
+								
+								  35/80 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>34</td>
+<td>B3J05311A</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J05311A');return false;">经典飞机设计实例解析</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('07891')">刘  虎</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09624')">周尧明</a>◇<br/>[1-16周]星期二第6,7节◇F101</div></td>
+<td>一般专业类</td>
+<td>任修</td>
+<td>航空科学与工程学院</td>
+<td>2.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J05311A-001" type="hidden" value=""/>
+								
+								  0/80 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>35</td>
+<td>B3J05311A</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J05311A');return false;">经典飞机设计实例解析</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('04760')">张云飞</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09142')">孙康文</a>◇<br/>[1-16周]星期二第6,7节◇F227</div></td>
+<td>一般专业类</td>
+<td>任修</td>
+<td>航空科学与工程学院</td>
+<td>2.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J05311A-002" type="hidden" value=""/>
+								
+								  62/80 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>36</td>
+<td>B3J05311A</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J05311A');return false;">经典飞机设计实例解析</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08908')">罗明强</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09885')">杨穆清</a>◇<br/>[1-16周]星期二第6,7节◇F228</div></td>
+<td>一般专业类</td>
+<td>任修</td>
+<td>航空科学与工程学院</td>
+<td>2.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J05311A-003" type="hidden" value=""/>
+								
+								  0/80 对外:0/0
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>37</td>
+<td>B3J062740</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J062740');return false;">C++与C#程序设计</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09250')">刘  禹</a>◇<br/>[1-9周]星期一第11,12节◇(一)304</div></td>
+<td>一般专业类</td>
+<td>任修</td>
+<td>计算机学院</td>
+<td>1.5</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J062740-001" type="hidden" value=""/>
+								
+								  102/190 对外:0/5
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>38</td>
+<td>B3J062820</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J062820');return false;">离散数学（3）</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('08673')">李建欣</a>,<a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('09702')">邓  婷</a>◇<br/>[1-3,14-16周]星期一第11,12节◇(一)301,[2,14,16双周]星期三第6,7节◇(一)301,[3-12双周]星期三第6,7节◇(一)301,[4-13周]星期一第11,12节◇(一)301</div></td>
+<td>一般专业类</td>
+<td>选修</td>
+<td>计算机学院</td>
+<td>3.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J062820-001" type="hidden" value=""/>
+								
+								  0/150 对外:0/3
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>39</td>
+<td>B3J062860</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J062860');return false;">计算引论</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('07767')">吕江花</a>◇<br/>[1-9周]星期一第11,12节◇F224</div></td>
+<td>一般专业类</td>
+<td>选修</td>
+<td>计算机学院</td>
+<td>1.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J062860-001" type="hidden" value=""/>
+								
+								  26/40 对外:0/2
+								  
+								
+				            </td>
+</tr>
+<tr>
+<td><div class="addlist_button3"><a><span>选   课</span></a></div></td>
+<td>40</td>
+<td>B3J072310</td>
+<td><a href="javascript:void(0);" onclick="javascript:queryKcxxDiv('B3J072310');return false;">工业软件开发基础综合实践</a>(全汉语)</td>
+<td></td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"></div></td>
+<td></td>
+<td></td>
+<td>学院路校区</td>
+<td><div style="width:100%; white-space: normal;word-break:break-all;"><a href="javascript:void(0);" onclick="javascript:queryJsxxDiv('06029')">程  伟</a>◇<br/>[1-16周]星期三第11,12节◇机械学院机房</div></td>
+<td>一般专业类</td>
+<td>选修</td>
+<td>机械工程及自动化学院</td>
+<td>1.0</td>
+<td>
+<input id="xkyq_2021-2022-2-B3J072310-001" type="hidden" value=""/>
+								
+								  0/40 对外:0/0
+								  
+								
+				            </td>
+</tr>
+</tbody></table>
+</div>
+<div class="youtube">
+<form action="/ieas2.1/xslbxk/queryXsxkList" method="post" name="page">
+<input id="pageNo" name="pageNo" type="hidden"/>
+<input id="pageSize" name="pageSize" type="hidden" value="20"/>
+<input id="pageCount" name="pageCount" type="hidden" value="5"/>
+</form>
+<div id="DivLoadingPage" style="display:none;"> <img src="/ieas2.1/resources/images/common/loading.gif"/></div><div id="setting"> </div><script type="text/javascript">
+function jump(no,size){     
+	if(size==null || size==""){
+		document.getElementById('pageNo').value= no;
+     var mhform=document.forms['queryform']
+        for( var k=0 ;k<mhform.elements.length;k++){
+              var fname=mhform.elements[k].name        
+               $(fname).find('input[name=fname]').remove()  
+          }
+        for( var k=0 ;k<mhform.elements.length;k++){
+              if(mhform.elements[k].type=='checkbox' || mhform.elements[k].type=='radio' ){       
+                 if(mhform.elements[k].checked==true){     
+               var ins=document.createElement("input")
+                ins.type="hidden" 
+                 ins.name=mhform.elements[k].name
+                ins.value=mhform.elements[k].value
+                document.forms['page'].appendChild(ins);
+                   }  
+                } else{   
+            var ins=document.createElement("input")
+                ins.type="hidden" 
+                 ins.name=mhform.elements[k].name
+                ins.value=mhform.elements[k].value
+                document.forms['page'].appendChild(ins);
+               }   
+          }  
+		document.forms['page'].submit();BOX_show('DivLoadingPage');
+	}else{
+     var mhform=document.forms['queryform']
+        for( var k=0 ;k<mhform.elements.length;k++){
+              if(mhform.elements[k].type=='checkbox' || mhform.elements[k].type=='radio' ){       
+                 if(mhform.elements[k].checked==true){     
+               var ins=document.createElement("input")
+                ins.type="hidden" 
+                 ins.name=mhform.elements[k].name
+                ins.value=mhform.elements[k].value
+                document.forms['page'].appendChild(ins);
+                   }  
+                } else{   
+            var ins=document.createElement("input")
+                ins.type="hidden" 
+                 ins.name=mhform.elements[k].name
+                ins.value=mhform.elements[k].value
+                document.forms['page'].appendChild(ins);
+            }
+          }  
+		document.getElementById('pageNo').value= no;
+		document.getElementById('pageSize').value= size
+		document.forms['page'].submit();BOX_show('DivLoadingPage');
+	}
+}
+</script>
+<ul class="list-page"><li><a href="javascript:jump('1')">首页</a></li>
+<li><a href="javascript:jump('1')">&lt;&lt;</a></li>
+<li> <a class="prev" href="javascript:jump('1')"> 1 </a></li><li> <a class="cur" href="javascript:jump('2')"> <b>2</b> </a></li><li> <a class="prev" href="javascript:jump('3')"> 3 </a></li><li> <a class="prev" href="javascript:jump('4')"> 4 </a></li><li> <a class="prev" href="javascript:jump('5')"> 5 </a></li><li><a href="javascript:jump('3')">&gt;&gt;</a></li>
+<li><a href="javascript:jump('5')">尾页</a> </li>
+</ul>
+</div>
+<div class="clr"></div>
+<div style="color: red">
+        	
+        	注：上课信息中“*”后的为该课程的【上机】或【实验】上课安排信息。
+        </div>
+<div class="clr"></div>
+</div>
+</div>
+<div id="xkyqDiv" style="display:none; width: 660px;border: 6px solid #dbd7d7;-webkit-box-shadow: 0px 0px 5px #000;-moz-box-shadow: 0px 0px 5px #000;box-shadow: 0px 0px 5px #000; ">
+<div class="syxz">
+<div class="xkxz_title"></div>
+<div class="pd10 LH28">
+<p id="xkyq_pid"></p>
+<input id="xkyq_rwh" type="hidden" value=""/>
+<input id="xkyq_rownum" type="hidden" value=""/>
+<div class="syxz_bottom">
+<span class="Floatright">
+<input id="button_yes" onclick="javascript:xkyqYes()" type="button" value="同意"/>
+<input id="button_no" onclick="javascript:xkyqNo()" type="button" value="关闭"/>
+</span>
+</div>
+<div class="clr"></div>
+</div>
+<div class="clr"></div>
+</div>
+</div>
+<div id="setting"> </div>
+</body></html>
