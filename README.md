@@ -4,7 +4,7 @@
 
 北航新版研究生选课系统的**补退选阶段**自动选课/抢课程序，采用selenium更新Cookie以及requests发送选课包的结合以达到持续检测课程余量并选课的目的，支持多线程多账号选课。
 
-author: Tan
+author: Tan,t0ush1
 
 ---
 
