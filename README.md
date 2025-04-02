@@ -1,4 +1,4 @@
-# BUAAAutoElective
+# BUAA_AutoElective
 
 ---
 
